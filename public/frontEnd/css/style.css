@@ -1,0 +1,705 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Hind Siliguri:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tiro+Bangla:ital@0;1&display=swap');
+body {
+    font-family: "Hind Siliguri", sans-serif;
+    font-size: 15px;
+    overflow-x: hidden;
+    line-height: 1.5;
+}
+:root {
+    --background-color: #F7F7F7;
+    --primary-color: #ED145B;
+    --secondary-color: #00aef0;
+    --secondary-color-extra: #153e58;
+    --en-font : "Lato", sans-serif;
+    --bn-font : "Hind Siliguri", sans-serif;
+    --tiro-font: "Tiro Bangla", serif;
+}
+
+/*==== COMMON CSS START ====*/
+p {
+    margin: 0;
+    color: #000;
+    padding: 0;
+}
+button,
+button:focus,
+button:active {
+    outline: none !important;
+    box-shadow: 0 0 !important;
+}
+form input::placeholder {
+    font-size: 15px;
+    color: #888;
+    text-align: left !important;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+}
+li {
+    display: inline-block;
+    list-style: none;
+}
+
+a,
+a:hover,
+a,
+a:hover,
+a:focus {
+    color: #000;
+    text-decoration: none;
+    outline-offset: 0;
+    outline: 0;
+    transition: 0.35s all;
+}
+button,
+button:focus,
+button:active {
+    text-decoration: none;
+    border: 0;
+    outline: 0;
+}
+.form-control,
+.form-control:focus,
+input,
+input:focus {
+    outline: 0;
+    border: 0;
+    box-shadow: 0 0 !important;
+}
+.parsley-errors-list {
+    color: var(--secondary-color);
+}
+.parsley-error {
+    border: 1px solid var(--secondary-color) !important;
+}
+.en-font {
+    font-family: var(--en-font);
+}
+.tiro-font {
+    font-family: var(--tiro-font);
+}
+img {
+    max-width: 100%;
+    height: 100%;
+}
+button {
+    padding: 0;
+    border: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+svg {
+    height: 16px;
+    width: 16px;
+}
+.cursor {
+    cursor: pointer;
+}
+.float-left {
+    float: left;
+}
+.float-right {
+    float: right;
+}
+.container {
+    max-width: 1200px;
+}
+.video-inner {
+    position: relative;
+}
+.play_btn {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    background: #FF5200;
+    animation: play_effect 2s infinite;
+    -webkit-animation: play_effect 2s infinite;
+    border-radius: 50%;
+    line-height: 45px;
+    left: 50%;
+    top: 50%;
+    color: #fff;
+    transform: translate(-50%, -50%);
+}
+@keyframes play_effect {
+    0% {
+      -webkit-box-shadow: 0 0 0 0 #FF8440;
+      box-shadow: 0 0 0 0 #FF8440;
+    }
+    70% {
+      -webkit-box-shadow: 0 0 0 30px transparent;
+      box-shadow: 0 0 0 30px transparent;
+    }
+    100% {
+      -webkit-box-shadow: 0 0 0 0 transparent;
+      box-shadow: 0 0 0 0 transparent;
+    }
+}
+.text-effect {
+    font-size: 2em;
+    font-weight: bold;
+    background: linear-gradient(to right, blue, #FF5200);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200%;
+    animation: colorShift 3s linear infinite;
+}
+
+@keyframes colorShift {
+    0% {
+      background-position: 0% 0;
+    }
+    50% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: 0% 0;
+    }
+}
+/*==== COMMON CSS END ====  */
+
+/*==== HEADER CSS START ====  */
+.header-section {
+    background: #fff;
+    padding: 10px 0;
+}
+.main-header {
+    display: grid;
+    grid-template-columns: 20% auto;
+    align-items: center;
+}
+.main-menu {
+    text-align: right;
+}
+.main-logo {
+    width: 150px;
+}
+.main-menu ul li{
+    position: relative;
+}
+.main-menu ul li a {
+    font-size: 18px;
+    margin-left: 30px;
+    font-weight: 600;
+    display: inline-block;
+    color: #222;
+    transition: 0.35s all;
+    padding: 18px 0;
+}
+.main-menu ul li a.active,.main-menu ul li a:hover {
+    color: #FF5200;
+}
+li.join_us a {
+    background: #ff5200;
+    color: #fff !important;
+    padding: 8px 25px !important;
+    border-radius: 5px;
+}
+.sub-menu {
+    position: absolute;
+    left: 0;
+    top: 85px;
+    width: 220px;
+    background: #fff;
+    text-align: left;
+    padding: 12px 0;
+    z-index: 99;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.35s all;
+}
+.sub-menu li a {
+    padding: 5px 0 !important;
+    font-size: 16px !important;
+}
+.main-menu ul li:hover .sub-menu {
+    top: 75px;
+    visibility: visible;
+    opacity: 1;
+}
+#page-overlay {
+    display: none;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0;
+    top: 0;
+    z-index: 9999;
+}
+/*==== HEADER CSS END ====  */
+
+/*==== SLIDER CSS START ====  */
+section.slider-section {
+    background: linear-gradient(45deg, #FAF0F0, #F1EBEF);
+    padding: 50px 0;
+}
+
+.slider-item {
+    height: 350px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.slider-inner {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+}
+
+.main-slider {
+    position: relative;
+}
+.slider-content h1 {
+    font-family: var(--bn-font);
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.slider-content p {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.slider-content {
+    padding-right: 100px;
+}
+a.slider_btn {
+    background: linear-gradient(to right, #ff5200, #ffb37d 105%);
+    color: #fff;
+    padding: 10px 25px;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: 0.35s all;
+}
+
+a.slider_btn:hover {
+    box-shadow: 0px 1px 6px 1px #ff5200;
+}
+.main-slider .owl-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+}
+.main-slider .owl-prev i {
+    background: #fff;
+    height: 40px;
+    width: 30px;
+    line-height: 40px;
+    color: #FF5200;
+    border-radius: 0px 10px 10px 0px;
+}
+.main-slider .owl-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+}
+.main-slider .owl-next i {
+    background: #fff;
+    height: 40px;
+    width: 30px;
+    line-height: 40px;
+    color: #FF5200;
+    border-radius: 10px 0 0 10px;
+}
+/*==== SLIDER CSS END ====  */
+
+/*==== MISSION CSS START ====  */
+.section-padding {
+    padding: 70px 0;
+}
+.mission-video .video-inner {
+    position: relative;
+    margin-top: 15px;
+}
+.mission-video img {
+    border-radius: 10px;
+}
+.mission-content ul li {
+    margin: 10px 0;
+    font-size: 17px;
+    color: #000036;
+}
+
+h3.mission-title.text-effect {
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 8px;
+    padding-bottom: 5px;
+}
+/*==== MISSION CSS END ====  */
+
+/*==== WHY CHOOSE CSS START ====  */
+section.why-choose-us.section-padding {
+    background: #fcfffe;
+}
+
+.why-choose-video img {
+    border-radius: 10px;
+}
+
+.why-choose-content ul {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 15px;
+}
+.why-choose-content ul li {
+    background: #f5f5f5;
+    border-radius: 5px;
+    text-align: center;
+    padding: 15px 0;
+}
+.why-choose-content ul li img {
+    width: 60px;
+    height: 60px;
+}
+
+.why-choose-content ul li p {
+    font-weight: 600;
+    font-size: 17px;
+    margin-top: 10px;
+}
+h3.choose-title {
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+/*==== WHY CHOOSE CSS END ====  */
+
+/*==== OUR COURSES CSS START ====  */
+.course-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 15px 0;
+    transition: 0.35s all;
+}
+.course-item:hover {
+    border-color: #FF5200;
+}
+.course-content {
+    padding: 15px;
+}
+
+a.course-title {
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+.course-content ul {
+    display: flex;
+    justify-content: space-between;
+    margin: 12px 0;
+}
+
+li.course-fee {
+    font-weight: 600;
+    font-size: 18px;
+}
+a.course-btn {
+    background: linear-gradient(to right, #ff5200, #ffb37d 105%);
+    color: #fff;
+    padding: 10px 30px;
+    display: inline-block;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: 0.35s all;
+}
+a.course-btn:hover {
+   box-shadow: 0px 1px 6px 1px #ff5200;
+}
+/*==== OUR COURSES CSS END ====  */
+
+/*==== OUR CLIENT CSS START ====  */
+section.our-clients.section-padding {
+    background: #fbfbff;
+}
+.client-list {
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    height: 90px;
+}
+.client-list img {
+    object-fit: contain;
+}
+/*==== OUR CLIENT CSS END ====  */
+
+/*==== FOOTER CSS START ====  */
+.footer-section{
+    position: relative;
+}
+.footer-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../images/footer-pattern.jpg);
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.5; /* Set the desired opacity for the background */
+    z-index: -1; /* Ensure it stays behind the content */
+}
+.footer-about p {
+    margin: 15px 0;
+}
+
+ul.social-media li a {
+    height: 30px;
+    width: 35px;
+    line-height: 30px;
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+.facebook-bg{
+    background: #2874ff;
+}
+.youtube-bg{
+    background: #ff0936;
+}
+.gmail-bg{
+    background: #ED4839;
+}
+h4.footer-title {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.footer-menu ul li {
+    display: block;
+}
+
+.footer-menu ul li a {
+    margin: 5px 0;
+    display: inline-block;
+}
+
+.footer-menu {
+    padding-left: 30px;
+}
+
+.footer-contact ul li {
+    display: flex;
+    gap: 15px;
+    margin: 10px 0;
+}
+
+.footer-contact ul li i {
+    height: 35px;
+    width: 35px;
+    line-height: 35px;
+    background: #FF5707;
+    text-align: center;
+    color: #fff;
+    border-radius: 50px;
+}
+/*==== FOOTER CSS END ====  */
+
+/*==== BREADCRUMB CSS START ====  */
+.breadcrumb-section {
+    background: #F9EEE8;
+    text-align: center;
+    padding: 25px 0;
+}
+.course-details-img img {
+    border-radius: 5px;
+}
+ul.course-duration {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 15px;
+}
+
+ul.course-duration li {
+    border: 1px solid #FF5200;
+    border-radius: 5px;
+    text-align: center;
+    padding: 15px;
+}
+ul.course-duration li p {
+    font-size: 20px;
+    color: #222;
+    font-weight: 600;
+}
+ul.course-duration li p.duration {
+    font-size: 16px;
+    color: #FF5200;
+}
+.course-overview {
+    margin: 25px 0;
+}
+.call-or-message a {
+    background: #18ef50;
+    color: #fff;
+    padding: 10px 10px;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 10px 0;
+    border-radius: 5px;
+    width: 50%;
+    text-align: center;
+}
+.call-or-message {
+    display: flex;
+    gap: 15px;
+}
+a.details-call {
+    background: #FF5200;
+}
+/*==== BREADCRUMB CSS END ====  */
+
+/*==== COURSE DETAILS CSS START ====  */
+.course-element {
+    background: #f1f1f1;
+    padding: 50px 0;
+}
+
+.element-content {
+    text-align: center;
+    padding: 18px;
+    border: 1px solid #FF5200;
+    border-radius: 5px;
+    height: 100%;
+}
+
+.element-content img {
+    height: 60px;
+}
+
+.element-content p {
+    font-size: 18px;
+    font-weight: 600;
+    color: #222;
+    margin-top: 5px;
+}
+.curriculam-content ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.curriculam-content ul li {
+    margin: 5px 0;
+}
+
+.curriculam-content ul li i {
+    color: #FF5200;
+}
+/*==== COURSE DETAILS CSS END ====  */
+
+/*==== SERVICE DETAILS CSS START ====  */
+.service-content {
+    padding: 25px 0;
+}
+.service-content ul li {
+    position: relative;
+    padding-left: 20px;
+    margin: 5px 0;
+}
+.service-content ul li:after {
+    content: "\f14a";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #28a745;
+}
+/*==== SERVICE DETAILS CSS END ====  */
+
+/*===== Contact Css Start ====*/
+.contact-area {
+    background: #FBFBFF;
+}
+.contact-inner {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 15px;
+}
+
+.contact-thumb {
+    background: #fff;
+    text-align: center;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.contact-thumb h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 25px;
+}
+
+.contact-thumb i {
+    font-size: 26px;
+    margin-bottom: 13px;
+}
+.contact-form h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+.contact-thumb p {
+    color: #555;
+    font-weight: 500;
+}
+.contact-form {
+    padding: 22px 20px;
+    background: #fff;
+    border-radius: 5px;
+}
+.contact-form input {
+    height: 52px !important;
+}
+.contact-map{
+    margin-top: 50px;
+}
+.contact-form .form-control {
+    border: 1px solid #ddd;
+    box-shadow: 0 0;
+    transition: 0.35s ease-in-out;
+    height: 42px;
+    border-radius: 5px;
+}
+button.btn-submit {
+    background: #FF5200;
+    color: #fff;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 5px;
+    width: 100%;
+}
+.contact-thumb .social-media li a i {
+   font-size: 16px !important;
+}
+.contact-thumb .social-media li a {
+    height: 35px;
+    line-height: 35px;
+    border-radius: 50px;
+}
+/*===== Contact Css End ====*/
