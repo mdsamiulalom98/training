@@ -13,4 +13,12 @@ class Course extends Model
     {
         return $this->hasMany(CourseFeature::class, 'course_id');
     }
+    public function videos()
+    {
+        return $this->hasMany(CourseVideo::class, 'course_id')->orderBy('sort', 'ASC');
+    }
+
+    public function video() {
+        return $this->hasOne(CourseVideo::class, 'course_id', 'id')->orderBy('sort', 'ASC');
+    }
 }

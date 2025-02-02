@@ -40,6 +40,7 @@ Route::group(['namespace' => 'Frontend', 'middleware' => ['check_refer']], funct
     Route::get('/about', [FrontendController::class, 'about'])->name('about');
     Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
     Route::get('/page/{slug}', [FrontendController::class, 'pages'])->name('page');
+    Route::get('/videos/{slug}/{id}', [FrontendController::class, 'course_video'])->name('course.video');
 });
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['customer', 'ipcheck', 'check_refer']], function () {
@@ -90,9 +91,6 @@ Route::group(['namespace' => 'Admin', 'middleware' => ['auth', 'lock', 'check_re
     Route::post('categories/inactive', [CategoryController::class, 'inactive'])->name('categories.inactive');
     Route::post('categories/active', [CategoryController::class, 'active'])->name('categories.active');
     Route::post('categories/destroy', [CategoryController::class, 'destroy'])->name('categories.destroy');
-
-
-
 
     // settings route
     Route::get('settings/manage', [GeneralSettingController::class, 'index'])->name('settings.index');
@@ -146,6 +144,8 @@ Route::group(['namespace' => 'Admin', 'middleware' => ['auth', 'lock', 'check_re
     Route::get('course/create', [CourseController::class, 'create'])->name('courses.create');
     Route::post('course/save', [CourseController::class, 'store'])->name('courses.store');
     Route::get('course/{id}/edit', [CourseController::class, 'edit'])->name('courses.edit');
+    Route::get('course/{id}/videos', [CourseController::class, 'videos'])->name('courses.videos');
+    Route::post('course/video-update', [CourseController::class, 'video_update'])->name('courses.video_update');
     Route::post('course/update', [CourseController::class, 'update'])->name('courses.update');
     Route::post('course/destroy', [CourseController::class, 'destroy'])->name('courses.destroy');
     Route::get('course/feature-update', [CourseController::class,'feature_destroy'])->name('courses.feature.destroy');

@@ -155,7 +155,12 @@ svg {
     background-size: 200%;
     animation: colorShift 3s linear infinite;
 }
-
+.custom-breadcrumb h2 {
+    line-height: 45px;
+}
+.section-title h2 {
+    line-height: 45px;
+}
 @keyframes colorShift {
     0% {
       background-position: 0% 0;
@@ -210,7 +215,7 @@ li.join_us a {
     position: absolute;
     left: 0;
     top: 85px;
-    width: 220px;
+    width: 320px;
     background: #fff;
     text-align: left;
     padding: 12px 0;
@@ -222,6 +227,10 @@ li.join_us a {
 .sub-menu li a {
     padding: 5px 0 !important;
     font-size: 16px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 .main-menu ul li:hover .sub-menu {
     top: 75px;
@@ -263,8 +272,10 @@ section.slider-section {
 }
 .slider-content h1 {
     font-family: var(--bn-font);
-    font-size: 40px;
+    font-size: 34px;
     font-weight: 600;
+    line-height: 50px;
+    text-align: left;
 }
 
 .slider-content p {
@@ -293,29 +304,29 @@ a.slider_btn:hover {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: 0;
+    left: 10px;
 }
 .main-slider .owl-prev i {
-    background: #fff;
-    height: 40px;
+    background: #ffffff;
+    height: 30px;
     width: 30px;
-    line-height: 40px;
+    line-height: 30px;
     color: #FF5200;
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 50px;
 }
 .main-slider .owl-next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 0;
+    right: 10px;
 }
 .main-slider .owl-next i {
-    background: #fff;
-    height: 40px;
+    background: #ffffff;
+    height: 30px;
     width: 30px;
-    line-height: 40px;
+    line-height: 30px;
     color: #FF5200;
-    border-radius: 10px 0 0 10px;
+    border-radius: 50px;
 }
 /*==== SLIDER CSS END ====  */
 
@@ -332,14 +343,16 @@ a.slider_btn:hover {
 }
 .mission-content ul li {
     margin: 10px 0;
-    font-size: 17px;
+    font-size: 18px;
     color: #000036;
+    text-align: justify;
 }
 
 h3.mission-title.text-effect {
     border-bottom: 2px solid #ddd;
     margin-bottom: 8px;
     padding-bottom: 5px;
+    line-height: 45px;
 }
 /*==== MISSION CSS END ====  */
 
@@ -394,21 +407,77 @@ h3.choose-title {
     padding: 15px;
 }
 
+
 a.course-title {
     font-size: 20px;
     text-transform: capitalize;
     font-weight: 600;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 60px;
 }
 
 .course-content ul {
     display: flex;
     justify-content: space-between;
     margin: 12px 0;
+    align-items: center;
 }
-
 li.course-fee {
     font-weight: 600;
     font-size: 18px;
+}
+
+.course-video-details {
+    border: 1px solid;
+}
+
+
+.course-video-title {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.course-video-title h4 {
+    font-size: 16px;
+}
+
+
+.course-lessons li {
+    display: block;
+}
+
+.course-lessons li.active {
+    background-color: #eff1f6;
+}
+
+.course-lessons li a {
+    display: block;
+    padding: 8px 30px;
+    color: #000;
+}
+.course-lessons li a::before {
+    content: '\f16a';
+    color: #ddd;
+    font-family: 'fontAwesome';
+    padding-right: 10px;
+
+}
+
+.course-lessons li:hover a,
+.course-lessons li.active a {
+    color: var(--primary-color);
+}
+.course-lessons li.active a::before,
+.course-lessons li:hover a::before {
+    color: var(--primary-color);
+}
+
+.video-inner iframe {
+    width: 100%;
+    height: 500px;
 }
 a.course-btn {
     background: linear-gradient(to right, #ff5200, #ffb37d 105%);
@@ -427,16 +496,19 @@ a.course-btn:hover {
 
 /*==== OUR CLIENT CSS START ====  */
 section.our-clients.section-padding {
-    background: #fbfbff;
+    background: #ededed;
 }
 .client-list {
     background: #fff;
     padding: 10px;
     border-radius: 5px;
-    height: 90px;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
 }
 .client-list img {
     object-fit: contain;
+    height: 90px;
 }
 /*==== OUR CLIENT CSS END ====  */
 
@@ -463,15 +535,15 @@ section.our-clients.section-padding {
 }
 
 ul.social-media li a {
-    height: 30px;
+    height: 35px;
     width: 35px;
-    line-height: 30px;
-    display: inline-block;
-    text-align: center;
+    display: flex;
     font-size: 20px;
     color: #fff;
     margin-right: 5px;
-    border-radius: 5px;
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
 }
 .facebook-bg{
     background: #2874ff;
@@ -485,6 +557,7 @@ ul.social-media li a {
 h4.footer-title {
     font-size: 20px;
     margin-bottom: 15px;
+    line-height: 30px;
 }
 
 .footer-menu ul li {
@@ -602,6 +675,10 @@ a.details-call {
 
 .curriculam-content ul li {
     margin: 5px 0;
+    list-style: none; /* Remove the default bullets */
+    background: url('../images/check-icon.svg') no-repeat left center;
+    padding-left: 30px; /* Add space to accommodate the image */
+    background-size: 20px 20px; /* Adjust size of the image */
 }
 
 .curriculam-content ul li i {

@@ -9,6 +9,7 @@ use App\Models\Service;
 use App\Models\SocialMedia;
 use App\Models\Contact;
 use App\Models\CreatePage;
+use App\Models\Course;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -36,7 +37,6 @@ class AppServiceProvider extends ServiceProvider
                 return GeneralSetting::where('status', 1)->first();
             });
 
-
             $contact = Cache::remember('contact', now()->addDays(7), function () {
                 return Contact::where('status', 1)->first();
             });
@@ -49,6 +49,9 @@ class AppServiceProvider extends ServiceProvider
                 return CreatePage::where('status', 1)->get();
             });
 
+            $courses = Cache::remember('courses', now()->addDays(7), function () {
+                return Course::where('status', 1)->select('id', 'title', 'slug', 'status')->get();
+            });
 
             $services = Service::where('status', 1)->select('id', 'title', 'slug', 'status')->get();
 
@@ -57,7 +60,8 @@ class AppServiceProvider extends ServiceProvider
                 'services' => $services,
                 'contact' => $contact,
                 'socialicons' => $socialicons,
-                'pages' => $pages
+                'pages' => $pages,
+                'courses' => $courses
             ]);
         });
     }

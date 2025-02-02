@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ asset('public/frontEnd/css/owl.carousel.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('public/frontEnd/css/owl.theme.default.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('public/backEnd/') }}/assets/css/toastr.min.css" />
-    <link rel="stylesheet" href="{{ asset('public/frontEnd/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('public/frontEnd/css/style.css?v=1.0.0') }}" />
     <link rel="stylesheet" href="{{ asset('public/frontEnd/css/responsive.css') }}" />
     <script src="{{ asset('public/frontEnd/js/jquery-3.7.1.min.js') }}"></script>
 
@@ -103,12 +103,20 @@
                                                 class="fa-solid fa-caret-down"></i></a>
                                         <div class="sub-menu">
                                             <ul>
-                                                <li><a href="{{ route('course.details', 'demo') }}">ওয়েব ডিজাইন</a></li>
-                                                <li><a href="{{ route('course.details', 'demo') }}">ওয়েব ডেভেলপমেন্ট</a></li>
-                                                <li><a href="{{ route('course.details', 'demo') }}">গ্রাফিক্স ডিজাইন</a></li>
-                                                <li><a href="{{ route('course.details', 'demo') }}">কম্পিউটার অ্যাপ্লিকেশন</a>
+                                                @foreach ($courses as $key => $value)
+                                                <li><a href="{{ route('course.details', $value->slug) }}">{{ $value->title }}</a></li>
+                                                @endforeach
+                                                {{-- <li><a href="{{ route('course.details', 'demo') }}">ওয়েব ডিজাইন</a>
                                                 </li>
-                                                <li><a href="{{ route('course.details', 'demo') }}">ডিজিটাল মার্কেটিং</a></li>
+                                                <li><a href="{{ route('course.details', 'demo') }}">ওয়েব
+                                                        ডেভেলপমেন্ট</a></li>
+                                                <li><a href="{{ route('course.details', 'demo') }}">গ্রাফিক্স
+                                                        ডিজাইন</a></li>
+                                                <li><a href="{{ route('course.details', 'demo') }}">কম্পিউটার
+                                                        অ্যাপ্লিকেশন</a>
+                                                </li>
+                                                <li><a href="{{ route('course.details', 'demo') }}">ডিজিটাল
+                                                        মার্কেটিং</a></li> --}}
                                             </ul>
                                         </div>
                                     </li>
@@ -148,8 +156,11 @@
                         <p>{{ $generalsetting->footer_details }}</p>
                         <ul class="social-media">
                             @foreach ($socialicons as $key => $value)
-                                <li><a href="{{ $value->link }}" class="facebook-bg"><i
-                                            class="{{ $value->icon }}"></i></a></li>
+                                <li>
+                                    <a href="{{ $value->link }}" class="{{ $value->title == 'facebook' ? 'facebook-bg' : 'youtube-bg' }}">
+                                        <i class="{{ $value->icon }}"></i>
+                                    </a>
+                                </li>
                             @endforeach
                             <li><a href="mailto:{{ $contact->email }}" class="gmail-bg"><i
                                         class="fa-solid fa-envelope"></i></a></li>
@@ -161,25 +172,29 @@
                         <h4 class="footer-title text-effect">প্রয়োজনীয় লিঙ্ক</h4>
                         <ul>
                             @foreach ($pages as $key => $value)
-                            <li><a href="{{ route('page', $value->slug) }}">{{ $value->title }}</a></li>
+                                <li><a href="{{ route('page', $value->slug) }}">{{ $value->title }}</a></li>
                             @endforeach
 
-                            <li><a href="{{ route('about')  }}">আমাদের সম্পর্কে</a></li>
+                            <li><a href="{{ route('about') }}">আমাদের সম্পর্কে</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="footer-contact">
                         <h4 class="footer-title text-effect">প্রয়োজনীয় লিঙ্ক</h4>
+                        @php
+                            $hotline = $contact->hotline;
+                            $phonenumber = $contact->phone;
+                        @endphp
                         <ul>
                             <li><i class="fa-solid fa-phone"></i>
-                                <p>০১৭৬৬৯৫০৯৮৬,০১৭৪২৮৯২৭২৫</p>
+                                <p>{{ $hotline }}, {{ $phonenumber }}</p>
                             </li>
                             <li><i class="fa-solid fa-map"></i>
-                                <p>দিনাজপুর সিটি কলেজ, নিমনগর বালুবাড়ি, দিনাজপুর</p>
+                                <p>{{ $contact->address }}</p>
                             </li>
                             <li><i class="fa-solid fa-envelope"></i>
-                                <p>training@websolutionit.com</p>
+                                <p>{{ $contact->hotmail }}</p>
                             </li>
                         </ul>
                     </div>
@@ -218,7 +233,6 @@
         $(".project_menus").on("click", function() {
             $(".subcat_pros").toggleClass("actives");
         });
-
     </script>
 </body>
 

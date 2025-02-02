@@ -71,7 +71,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="why-choose-content">
-                        <h3 class="choose-title text-effect">কেনো আমাদের কোর্স করবেন?</h3>
+                        <h3 class="choose-title text-effect"> আমাদের কোর্সগুলো কেনো সেরা?</h3>
                         <ul>
                             @foreach ($whychoose as $key => $value)
                                 <li>
@@ -106,7 +106,7 @@
                 </div>
             </div>
             <div class="row">
-                @foreach ($courses as $key => $value)
+                @foreach ($homecourses as $key => $value)
                     <div class="col-sm-4">
                         <div class="course-item">
                             <div class="course-img">
@@ -120,15 +120,24 @@
                                 </a>
                                 <ul>
                                     <li>কোর্স ফি</li>
+                                    @if($value->free_course == 1)
+                                    <li class="course-fee">
+                                        <a href="{{ route('course.video', ['slug' => $value->slug, 'id' => $value->video->id]) }}" class="course-btn">এনরোল </a>
+                                    </li>
+                                    @else
                                     <li class="course-fee">
                                         @php
                                             $numToBangla = new \Rakibhstu\Banglanumber\NumberToBangla();
                                             $banglaNumber = $numToBangla->bnNum($value->course_fee);
                                         @endphp
                                         {{ $banglaNumber }}
-                                        টাকা</li>
+                                        টাকা {{ $value->free_course }}
+                                    </li>
+                                    @endif
                                 </ul>
+                                @if($value->free_course != 1)
                                 <a href="{{ route('course.details', $value->slug) }}" class="course-btn">বিস্তারিত দেখুন</a>
+                                @endif
                             </div>
                         </div>
                     </div>
